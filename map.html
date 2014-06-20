@@ -21,9 +21,12 @@
  	    };
     	var map = new google.maps.Map(document.getElementById('map'), options);
 
-		var marker = new google.maps.Marker ({
-			position: map.getCenter(),
-			map: map
+		// 以下でクリックしたところにマーカーを付ける
+		google.maps.event.addListener(map, 'click', function(event) {
+			var marker = new google.maps.Marker ({
+				position: event.latLng,
+				map: map
+			});
 		});
      </script>
 </body>
