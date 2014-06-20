@@ -22,11 +22,22 @@
     	var map = new google.maps.Map(document.getElementById('map'), options);
 
 
+		// 情報ウインドウの表示
 		var infoWindow = new google.maps.InfoWindow({
 			content: '<strong>渋谷のあたり</strong>だよ！',
-			position: map.getCenter()
 		});
-		infoWindow.open(map);
+
+		// マーカーの表示
+		var marker = new google.maps.Marker({
+			position: map.getCenter(),
+			map: map
+		});
+		
+		// 以下で情報ウインドウとマーカーを連動させる
+		google.maps.event.addListener(marker, 'click', function() {
+			infoWindow.open(map, marker);
+		});
+
      </script>
 </body>
 </html>
